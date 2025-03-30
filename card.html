@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEURO DRAW</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0a0a0a;
+      color: #ffffff;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    p {
+      font-size: 0.9rem;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #aaa;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 800px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #444;
+      padding: 40px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s ease;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+    }
+    .card:hover {
+      background: rgba(0, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+    #result {
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      max-width: 600px;
+      text-align: center;
+      font-size: 0.95rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>:: CHOOSE YOUR PATH ::</h1>
+  <p>당신의 감각 링크가 안정화되었습니다.<br>이제, 감각 접속 카드를 선택하세요.</p>
+
+  <div class="card-grid">
+    <div class="card" onclick="drawCard('INTUNE')">INTUNE</div>
+    <div class="card" onclick="drawCard('VISUALIZER')">VISUALIZER</div>
+    <div class="card" onclick="drawCard('TACTILE SEEKER')">TACTILE SEEKER</div>
+    <div class="card" onclick="drawCard('SOUNDDRIFTER')">SOUNDDRIFTER</div>
+    <div class="card" onclick="drawCard('SIGNAL BENDER')">SIGNAL BENDER</div>
+    <div class="card" onclick="drawCard('DREAM SYNCER')">DREAM SYNCER</div>
+    <div class="card" onclick="drawCard('CORE BREACHER')">CORE BREACHER</div>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    const cardDescriptions = {
+      'INTUNE': '당신은 보이지 않는 신호에 동조하는 자. 감정의 미세한 떨림을 감지해 주변의 흐름을 재조정합니다.',
+      'VISUALIZER': '모든 사물의 패턴을 시각화하는 능력자. 현실의 레이어를 꿰뚫어보는 눈을 가졌습니다.',
+      'TACTILE SEEKER': '촉각의 연금술사. 손끝에 감각을 집중해 감춰진 진실을 추출합니다.',
+      'SOUNDDRIFTER': '주파수의 흐름에 몸을 실은 채, 이면의 진동을 탐색합니다.',
+      'SIGNAL BENDER': '정보의 파동을 조작해 자신에게 유리한 현실을 설계합니다.',
+      'DREAM SYNCER': '꿈과 현실 사이의 경계에서 감각을 확장하며 미래의 가능성을 끌어옵니다.',
+      'CORE BREACHER': '모든 시스템의 핵심을 돌파하는 존재. 감각의 경계를 초월해 진입합니다.'
+    };
+
+    function drawCard(name) {
+      const result = document.getElementById('result');
+      result.style.display = 'block';
+      result.innerHTML = `<h2>${name}</h2><p>${cardDescriptions[name]}</p>`;
+    }
+  </script>
+</body>
+</html>
+
