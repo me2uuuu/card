@@ -57,6 +57,23 @@
       font-size: 0.95rem;
       display: none;
     }
+    .extra-buttons {
+      margin-top: 20px;
+      display: none;
+      gap: 10px;
+    }
+    .extra-buttons button {
+      background: rgba(0,255,255,0.1);
+      border: 1px solid #00ffff;
+      color: #00ffff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+    }
+    .extra-buttons button:hover {
+      background: rgba(0,255,255,0.3);
+    }
   </style>
 </head>
 <body>
@@ -75,6 +92,11 @@
 
   <div id="result"></div>
 
+  <div class="extra-buttons" id="extraButtons">
+    <button onclick="resetDraw()">🔁 다시 뽑기</button>
+    <button onclick="copyResult()">📋 결과 복사</button>
+  </div>
+
   <script>
     const cardDescriptions = {
       'INTUNE': '당신은 보이지 않는 신호에 동조하는 자. 감정의 미세한 떨림을 감지해 주변의 흐름을 재조정합니다.',
@@ -86,12 +108,28 @@
       'CORE BREACHER': '모든 시스템의 핵심을 돌파하는 존재. 감각의 경계를 초월해 진입합니다.'
     };
 
+    let selectedCard = "";
+
     function drawCard(name) {
+      selectedCard = name;
       const result = document.getElementById('result');
+      const extra = document.getElementById('extraButtons');
       result.style.display = 'block';
+      extra.style.display = 'flex';
       result.innerHTML = `<h2>${name}</h2><p>${cardDescriptions[name]}</p>`;
+    }
+
+    function resetDraw() {
+      document.getElementById('result').style.display = 'none';
+      document.getElementById('extraButtons').style.display = 'none';
+    }
+
+    function copyResult() {
+      const text = `내 감각 타입은: ${selectedCard}\n\n${cardDescriptions[selectedCard]}`;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('결과가 복사되었습니다!');
+      });
     }
   </script>
 </body>
 </html>
-
